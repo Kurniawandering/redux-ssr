@@ -1,7 +1,6 @@
 import React from 'react'
-import { match, Router } from 'react-router'
+import { match, browserHistory, Router } from 'react-router'
 import { render } from 'react-dom'
-import { createHistory } from 'history'
 import routes from './routes/Index'
 
 if (process.env.BROWSER) {
@@ -11,9 +10,9 @@ if (process.env.BROWSER) {
 const { pathname, search, hash } = window.location
 const location = `${pathname}${search}${hash}`
 
-match({ routes, location }, () => {
+match({ routes, location, browserHistory }, (error, redirectLocation, renderProps) => {
     render(
-        <Router routes={routes} history={createHistory()} />,
+        <Router {...renderProps} />, 
         document.getElementById('app')
     )
 })

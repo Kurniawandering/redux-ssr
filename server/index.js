@@ -8,7 +8,7 @@ import httpProxy from 'http-proxy'
 import React from 'react'
 import _ from 'lodash'
 import { renderToString } from 'react-dom/server'
-import { match, RoutingContext } from 'react-router'
+import { match, RouterContext } from 'react-router'
 import routes from './../routes/Index'
 
 let proxy = httpProxy.createProxyServer(),
@@ -37,7 +37,7 @@ const server = http.createServer((req, res) => {
         } else if (renderProps) {
             res.setHeader('Content-Type', 'text/html'); 
             res.sendDate = true;
-            data.body = renderToString(<RoutingContext {...renderProps} />);
+            data.body = renderToString(<RouterContext {...renderProps} />);
             res.end(html(data));
             
         } else if (/__public__/.test(req.url) ) {
