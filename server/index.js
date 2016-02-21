@@ -8,8 +8,13 @@ import httpProxy from 'http-proxy'
 import React from 'react'
 import _ from 'lodash'
 import { renderToString } from 'react-dom/server'
-import { match, RouterContext } from 'react-router'
+import { createMemoryHistory, match, RouterContext } from 'react-router'
 import routes from './../routes/Index'
+
+import { Provider } from 'react-redux'
+import { syncHistoryWithStore } from 'react-router-redux'
+import serialize from 'serialize-javascript'
+import { configureStore } from './../stores/store'
 
 let proxy = httpProxy.createProxyServer(),
     isProduction = process.env.NODE_ENV === 'production',
@@ -18,9 +23,14 @@ let proxy = httpProxy.createProxyServer(),
     template = fs.readFileSync(viewPath + '/index.html', 'utf8');
 
 const server = http.createServer((req, res) => {
+    var memoryHistory = createMemoryHistory(req.url),
+    store = configureStore(memoryHistory),
+    history = syncHistoryWithStore(memoryHistory, store);
+
     match({ 
         routes, 
-        location: req.url 
+        location: req.url,
+        history
     }, (error, redirectLocation, renderProps) => {
         let data = {},
             html = _.template(template);
@@ -37,7 +47,14 @@ const server = http.createServer((req, res) => {
         } else if (renderProps) {
             res.setHeader('Content-Type', 'text/html'); 
             res.sendDate = true;
-            data.body = renderToString(<RouterContext {...renderProps} />);
+            data.body = renderToString(
+                <Provider store={store}>
+                    <RouterContext {...renderProps}/>
+                </Provider>
+            )
+            data.initialState = '<script dangerouslySetInnerHTML= { __html: window.__initialState__ =' + serialize(store.getState()) + '} />';        
+           
+            //data.body = renderToString(<RouterContext {...renderProps} />);
             res.end(html(data));
             
         } else if (/__public__/.test(req.url) ) {
