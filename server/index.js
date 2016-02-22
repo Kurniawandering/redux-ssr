@@ -52,6 +52,11 @@ const server = http.createServer((req, res) => {
                 </Provider>
             )
             data.initialState = serialize(store.getState());
+            if (!isProduction) {
+                data.devTools = '<div id="devtools"></div>';
+            } else {
+                data.devTools = ''; 
+            }
             res.end(html(data));
             
         } else if (/__public__/.test(req.url) ) {

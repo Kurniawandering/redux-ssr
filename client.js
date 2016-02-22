@@ -25,10 +25,13 @@ match({ routes, location, history }, (error, redirectLocation, renderProps) => {
     )
 })
 
-// Ideally, the 'app' should be rendered this way
-render(
-  <Provider store={store}>
-    <DevTools/>
-  </Provider>,
-  document.getElementById('devtools')
-)
+if (process.env.NODE_ENV === 'development') {
+    // Ideally, the 'app' should be rendered this way
+    render(
+    <Provider store={store}>
+        <DevTools/>
+    </Provider>,
+    document.getElementById('devtools')
+    )
+}
+

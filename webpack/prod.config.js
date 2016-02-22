@@ -34,7 +34,8 @@ module.exports = {
         new ExtractTextPlugin('style.css'),
         new webpack.DefinePlugin({
             'process.env': {
-                BROWSER: JSON.stringify(true)
+                BROWSER: JSON.stringify(true),
+                NODE_ENV: JSON.stringify('production')
             }
         })
     ]
