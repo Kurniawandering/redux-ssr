@@ -14,7 +14,7 @@ class Navigation extends React.Component {
                 </header>
                 <ul className='navbar'>
                     <li><Link to="/">Home</Link></li>
-                    <li><Link to="/bye">Bye message</Link></li>
+                    <li><Link to="/button">Bye message</Link></li>
                 </ul>
                 {this.props.children}
             </div>

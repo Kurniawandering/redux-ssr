@@ -108,5 +108,5 @@ server.listen(port, function(err) {
     console.log('Listening on ' + port + '...');
 });
 proxy.on('error', function(e){
-    console.log('Dit gaat niet goed, omdat' + e);
+    console.log('Dit gaat niet goed, omdat ' + e);
 });
