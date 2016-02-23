@@ -14,7 +14,7 @@ import routes from './../routes/Index'
 import { Provider } from 'react-redux'
 import { syncHistoryWithStore } from 'react-router-redux'
 import serialize from 'serialize-javascript'
-import { configureStore } from './../stores/store'
+import { configureStore } from './../core/store'
 
 let proxy = httpProxy.createProxyServer(),
     isProduction = process.env.NODE_ENV === 'production',

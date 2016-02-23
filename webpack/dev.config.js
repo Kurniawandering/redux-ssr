@@ -6,7 +6,7 @@ export default {
     entry: [
         'webpack/hot/dev-server',
         'webpack-dev-server/client?http://localhost:8080/',
-        './client.js'
+        './devtools/DevToolsBootstrap.js'
     ],
     output: {
         path: path.join(__dirname, '/../__public__'),
