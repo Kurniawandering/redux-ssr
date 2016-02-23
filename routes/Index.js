@@ -10,7 +10,7 @@ export default {
     getChildRoutes(location, cb) {
         require.ensure([], (require) => {
             cb(null, [ 
-                require('./ButtonRoute.js') 
+                require('./buttonRoute.js') 
             ])
         })
     },

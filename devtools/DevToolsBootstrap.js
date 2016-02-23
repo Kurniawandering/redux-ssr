@@ -1,12 +1,12 @@
 import React from 'react'
 import { render } from 'react-dom'
-import routes from '../routes/Index'
+import routes from '../routes'
 
 import { Provider } from 'react-redux'
 import { Router, browserHistory, match } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
-import { configureStore } from './DevToolsStore'
-import { DevTool } from './DevToolsContainer'
+import { configureStore } from './devToolsStore'
+import { DevTool } from './devToolsContainer'
 
 if (process.env.BROWSER) {
     require('../styles/manifest.scss');

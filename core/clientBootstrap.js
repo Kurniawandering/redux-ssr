@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { Router, browserHistory, match } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { configureStore } from './store'
-import routes from '../routes/Index'
+import routes from '../routes'
 
 
 if (process.env.BROWSER) {

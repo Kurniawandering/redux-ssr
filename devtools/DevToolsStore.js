@@ -2,7 +2,7 @@ import React from 'react'
 
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
 import { routerReducer, routerMiddleware } from 'react-router-redux'
-import { DevTool } from './DevToolsContainer'
+import { DevTool } from './devToolsContainer'
 
 export function configureStore(history, initialState) {
   const reducer = combineReducers({
