@@ -2,7 +2,7 @@ const INCREASE = 'INCREASE'
 const DECREASE = 'DECREASE'
 
 export function increase(n) {
-  return {
+    return {
     type: INCREASE,
     amount: n
   }

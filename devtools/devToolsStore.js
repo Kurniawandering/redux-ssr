@@ -3,7 +3,7 @@ import React from 'react'
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
 import { routerReducer, routerMiddleware } from 'react-router-redux'
 import { DevTool } from './devToolsContainer'
-import reducers from '../components/Button/counterReducer'
+import reducers from '../components/Counter/counterReducer'
 
 export function configureStore(history, initialState) {
   

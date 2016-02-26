@@ -1,6 +1,6 @@
-import Button from '../components/Button/index'
+import Buttons from '../components/Buttons'
 
 module.exports = {
     path: 'button',
-    component: Button
+    component: Buttons
 }
